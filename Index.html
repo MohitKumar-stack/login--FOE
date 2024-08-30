@@ -1,0 +1,353 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #error-message {
+            color: red;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <div class="input-group">
+            <label for="email">Email ID:</label>
+            <input type="email" id="email" required>
+        </div>
+        <div class="input-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+        </div>
+        <button id="loginButton">Submit</button>
+        <p id="error-message"></p>
+    </div>
+    <script>
+        document.getElementById('loginButton').addEventListener('click', function() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            // User credentials
+const basicUsers1 = {
+                "bkaur72991@gmail.com":"bkaur123",
+                "harpreetjagera4@gmail.com":"harpreet123",
+                "vikaskumar009181@gmail.com":"vikaskumar123",
+                "raja.palwy@yahoo.com":"raja123",
+                "amardeol553@gmail.com":"amardeol123",
+                "kashmirs0642@gmail.com":"kash123",
+                "ravisonsidhu7@gmail.com":"ravisonsidhu123",
+                "navreetvirk595@gmail.com":"navreetvirk595",
+                "jasdeepsingh8733@gmail.com":"jasdeep123",
+                "Jagroopgill3455@gmail.com":"Jagroopgil123",
+                "Singhnounihal8@gmail.com":"Singhnounihal123",
+                "bs506657@gmail.com":"bs123",
+                "shikhakumar619@gmail.com":"shikhakumar123",
+                "jeetachagdal@gmail.com":"jeetachagdal123",
+                "omshanti776@gmail.com":"omshanti776",
+                "heavan1983@gmail.com":"heavan123",
+                "soniarani20046@gmail.com":"soniarani2004",
+                "Ramkishan8902@gmail.com":"Raman123",
+                "harpreetsingh20003@gmail.com":"harpreetsingh123",
+                "Bprabh972@gmail.com":"Bprabh972",
+                "Sukhpalkaur1103@gmail.com":"Sukhpalkaur123",
+                "sukhdevg128@gmail.com":"sukhdevg128",
+                "Sumanpreetbhatti7796@gmail.com":"Sumanpreetbhatti123",
+                "iamamrikmch@gmail.com":"iamamrikmch123",
+                "79karann@gmail.com":"79karann",
+                "sandhulovepreet55228@gmail.com":"sandhulovepreet123",
+                "lalgagan124@gmail.com":"lalgagan123",
+                "jyotishahi12@gmail.com":"jyotishahi12",
+                "gurnawaz123@gmail.com":"gurnawaz123",
+                "nickmundi717@gmail.com":"nickmundi123",
+                "Jagmeetkaur954b@gmail.com":"Jagmeetkaur123",
+                "Ramkrishanverma9646@gmail.com":"Ramkrishanverma123",
+                "jbhullar181@gmail.com":"jbhullar181",
+                "alka1devi@gmail.com":"alka1devi",
+                "dalaljyoti1411@gmail.com":"dalaljyoti123",
+                "anjalirani1622@gmail.com":"anjalirani123",
+                "ajaysharma1680@gmail.com":"ajaysharma123",
+                "nish64000@gmail.com":"nish64000",
+                "suhanakagda@gmail.com":"suhanakagda123",
+                "Sariainderjeet21@gmail.com":"Sariainderjeet123",
+                "Kashmiramanlift123@gmail.com":"Kashmiramanlift123",
+                "Kulveerkauraulakh9@gmail.com":"Kulveerkauraulak123",
+                "komalpreetkaur9600@gmail.com":"komalpreetkaur123",
+                "Sangatpreetdhillon@gmail.com":"Sangatpreetdhillon",
+                "tajinder4287@gmail.com":"tajinder4287",
+                "ns4422331@gmail.com":"ns4422331",
+                "kamalseenkamalseen@gmail.com":"kamalseenkamalseen",
+                "dmcmanas@gmail.com":"dmcmanas",
+                "kaler2749@gmail.com":"kaler2749",
+                "chiefkulwinder@gmail.com":"chiefkulwinder",
+                "s94502441@gmail.com":"s94502441",
+                "Palakkaur5552713@gmail.com":"Palakkaur5552713",
+                "gagan64243@gmail.com":"gagan64243",
+                "sainifamily345@gmail.com":"sainifamily345",
+                "vishalvishu9038@gmail.com":"vishalvishu9038",
+                "a09236147@gmail.com":"a09236147",
+                "majhallkailey1275@gmail.com":"majhallkailey1275",
+                "surmukhmundra24@gmail.com":"surmukhmundra24",
+                "shubhamsharma61413@gmail.com":"shubhamsharma61413",
+                "Jaura47@gmail.com":"Jaura47",
+                "gs3355349@gmail.com":"gs3355349",
+                "Baljeet7423@gmail.com":"Baljeet7423",
+                "varinderkaur29117@gmail.com":"varinderkaur29117",
+                "life4rupinder@gmail.com":"life4rupinder",
+                "ramdeepsinghbrar19910@gmail.com":"ramdeepsinghbrar19910",
+                "tarlochanrandhawa785@gmail.com":"tarlochanrandhawa785",
+                "mehakprsandh@gmail.com":"mehakprsandh",
+                "puneetkaur1099@gmail.com":"puneetkaur1099"
+};
+
+
+
+         
+            const basicUsers = {
+             "ginnibuttar2907@gmail.com":"ginnibuttar2907",
+                "arashdeeps028gmail.com": "arashdeeps123",
+                "Simmubabber8@gmail.com": "basicSandeep@793",
+                "Jaimalsinghjaimalsingh74@gmail.com":"Jaimal123",
+                "jagi2832@gmail.com":"jagi123",
+                "Arvinder8596@gmail.com":"Arvinder123",
+                "Hk.9464251223@gmail.com":"Hk123",
+                "gurlal80120@gmail.com":"gurla123",
+                "singhblacksmith@yahoo.in":"smith123",
+                "Gulabsingh.98158@gmail.com":"Gulabsingh123",
+                "upninderkaur18@gmail.com":"upninderkaur123",
+                "sunilbains445@gmail.com":"sunilbains445",
+                "Yuvrajrai59@gmail.com":"Yuvrajrai59",
+                "07sunilhockey@gmail.com":"sunil123",
+                "raniseema97797@gmail.com":"raniseema123",
+                "Spal49531@gmail.com":"Spal123",
+                "Parmpal2010@gmail.com":"Parmpal123",
+                "bajwajaswinder239@gmail.com":"bajwajaswinder123",
+                "dandiwal82876@gmail.com":"dandiwal123",
+                "09814099525shah@gmail.com":"shah123",
+                "hs3676417@gmail.com":"Harwinder123",
+                "Varinderpalmatta@gmail.com":"Varinderpalmatta",
+             "sandhuranjit035@gmail.com":"sandhuranjit035",
+             "grewaljagdeep81@gmail.com":"grewaljagdeep81",
+             "manpreetkourp11@gmail.com":"manpreetkourp11",
+             "Parmindernahal85@gmail.com":"Parmindernahal85",
+             "Jasvirkaur19081973@gmail.com":"Jasvirkaur19081973",
+             "ravisinghladhar843@gmail.com":"ravisinghladhar843",
+             "garnalsimran5@gmail.com":"garnalsimran5",
+             "reetanureetkaur46@gmail.com":"reetanureetkaur46"
+                
+
+
+
+            };
+
+            const middleUsers = {
+             "sarbjeetkaur4221@gmail.com":"sarbjeetkaur4221",
+             "Narenderkaur915@gmail.com":"Narenderkaur915",
+             "rajdeepjgn4@gmail.com":"rajdeepjgn4",
+             "sharnjeetbnl@gmail.com":"sharnjeetbnl",
+             "2000jaskiratsingh00018@gmail.com":"2000jaskiratsingh00018",
+             "malikjoginder399@gmail.com":"malikjoginder399",
+             "Kuljeetsandhu1313asr@gmail.com":"Kuljeetsandhu1313asr",
+             "Charnpreetmaan04@gmail.com":"Charnpreetmaan04",
+             "dhir3922@gmail.com":"dhir3922",
+             "jwarika42@gmail.com":"jwarika42",
+             "gurpreetsinghsony08@gmail.com":"gurpreetsinghsony08",
+             "123navneet2244@gmail.com":"123navneet2244",
+             "sandeepkaur1519920@gmail.com":"sandeepkaur1519920",
+             "123romandeep22@gmail.com":"123romandeep22",
+             "rajbirkaur.kaumi@gmail.com":"rajbirkaur.kaumi",
+             "jasmers788@gmail.com":"jasmers788",
+             "Gurjitgurjit4039@gmail.com":"Gurjitgurjit4039",
+             "Gurisivia3512@gmail.com":"Gurisivia3512",
+             "sonudhunna1234@gmail.com":"sonudhunna1234",
+             "karanraisabb@gmail.com":"karanraisabb",
+             "Gs252652@gmail.com":"Gs252652",
+             "birdavindersingh1982@gmail.com":"birdavindersingh1982",
+             "sb4807082@gmail.com":"sb4807082",
+             "Simranjeetsinghmanni@gmail.com":"Simranjeetsinghmanni",
+             "rajwantkaur0910@gmail.com":"rajwantkaur0910",
+                "kaurrajwinder5244@gmail.com":"kaurrajwinder5244",
+                "Chhabrareetu48@gmail.com":"Chhabrareetu48",
+                "arashdeeps028gmail.com": "arashdeeps345",
+                "Simmubabber8@gmail.com": "middleSandeep@793",
+                "Jaimalsinghjaimalsingh74@gmail.com":"Jaimal456",
+                "jagi2832@gmail.com":"jagi456",
+                "Hk.9464251223@gmail.com":"Hk456",
+                "gurlal80120@gmail.com":"gurla456",
+                "singhblacksmith@yahoo.in":"smith456",
+                "07sunilhockey@gmail.com":"sunil456",
+                "raniseema97797@gmail.com":"raniseema456",
+                "Spal49531@gmail.com":"Spal456",
+                "Parmpal2010@gmail.com":"Parmpal456",
+                "bajwajaswinder239@gmail.com":"bajwajaswinder456",
+                "dandiwal82876@gmail.com":"dandiwal456",
+                "hs3676417@gmail.com":"Harwinder456",
+                "bkaur72991@gmail.com":"bkaur456",
+                "harpreetjagera4@gmail.com":"harpreet456",
+                "vikaskumar009181@gmail.com":"vikaskumar456",
+                "raja.palwy@yahoo.com":"raja456",
+                "amardeol553@gmail.com":"amardeol456",
+                "ravisonsidhu7@gmail.com":"ravisonsidhu456",
+                "jasdeepsingh8733@gmail.com":"jasdeep456",
+                "Jagroopgill3455@gmail.com":"Jagroopgil456",
+                "Singhnounihal8@gmail.com":"Singhnounihal456",
+                "bs506657@gmail.com":"bs456",
+                "shikhakumar619@gmail.com":"shikhakumar456",
+                "jeetachagdal@gmail.com":"jeetachagdal456",
+                "heavan1983@gmail.com":"heavan456",
+                "Ramkishan8902@gmail.com":"Raman456",
+                "harpreetsingh20003@gmail.com":"harpreetsingh456",
+                "Sukhpalkaur1103@gmail.com":"Sukhpalkaur456",
+                "Sumanpreetbhatti7796@gmail.com":"Sumanpreetbhatti456",
+                "iamamrikmch@gmail.com":"iamamrikmch456",
+                "sandhulovepreet55228@gmail.com":"sandhulovepreet456",
+                "lalgagan124@gmail.com":"lalgagan456",
+                "gurnawaz123@gmail.com":"gurnawaz456",
+                "nickmundi717@gmail.com":"nickmundi456",
+                "Jagmeetkaur954b@gmail.com":"Jagmeetkaur456",
+                "Gourabsingh950@gmail.com":"Gourabsingh950",
+                "dalaljyoti1411@gmail.com":"dalaljyoti456",
+                "anjalirani1622@gmail.com":"anjalirani456",
+                "ajaysharma1680@gmail.com":"ajaysharma456",
+                "suhanakagda@gmail.com":"suhanakagda456",
+                "Sariainderjeet21@gmail.com":"Sariainderjeet456",
+                "Kashmiramanlift123@gmail.com":"Kashmiramanlift456"
+               
+
+            
+               
+            };
+
+            const advancedUsers = {
+                 "tarandeepkalsi@gmail.com":"tarandeepkals",
+                "mkchahal2323@gmail.com":"mkchahal2323",
+                "cs203800@gmail.com":"cs203800",
+                "kamaldhimaan2397@gmail.com":"kamaldhimaan2397",
+                "ekamroop2014@gmail.com":"ekamroop2014",
+                "azadveeraulakh5@gmail.com":"azadveeraulakh5",
+                "kour65705@gmail.com":"kour65705",
+                "rajveerkaur5051@gmail.com":"rajveerkaur5051",
+                "ls3734799@gmail.com":"ls3734799",
+                "Sharmasanjeev1616@gmail.com":"Sharmasanjeev1616",
+                "gurmindersaroya@gmail.com":"gurmindersaroya",
+                "Gurpreet@gmail.com":"Gurpreet",
+                "manpreetkaurdhindsa627@gmail.com":"manpreetkaurdhindsa6",
+                "Sanjeev.111@icloud.Com":"Sanjeev.111",
+                "hirasinghgill2@gmail.com":"hirasinghgill",
+                "Pawanrahon1985@gmail.com":"Pawanrahon1985",
+             "Manjinderkaur111290@gmail.com":"Manjinderkaur11129",
+             "lakhvirgill905@gmail.com":"lakhvirgill905",
+                "Kulveerkauraulakh9@gmail.com":"Kulveerkauraulak456",
+                "komalpreetkaur9600@gmail.com":"komalpreetkaur456",
+                "harmanjotsingh761@gmail.com":"harmanjotsingh761",
+                "neharana78666@gmail.com":"neharana78666",
+                "Jagdeepkaursohal@gmail.com":"Jagdeepkaursohal",
+                "kaurmanjeet0064@gmai.com":"kaurmanjeet0064",
+                "kour65705@gmail.com":"kour65705",
+                "nancy44074407@gmail.com":"nancy44074407",
+                "Sharrydhiman13@gmail.com":"Sharrydhiman13",
+                "harjitkaursidhu15@gmail.com":"harjitkaursidhu15",
+                "Priyamand9@gmail.com":"Priyamand9",
+                "deepmaujia8@gmail.com":"deepmaujia8",
+                "harwindersaroye95@gmail.com":"harwindersaroye95",
+                "kmadan90453@gmail.com":"kmadan90453",
+                "shahitasahi@gmail.com":"shahitasahi",
+                "Sharmashaiva9@gmail.com":"Sharmashaiva9",
+                "Pallvisharma7652905713@gmail.com":"Pallvisharma7652905713",
+                "rekharani03051984@gmail.com":"rekharani03051984",
+                "samarbeersogurpalsingh2ndc@gmail.com":"samarbeersogurpalsingh2ndc",
+                "arash6558@gmail.com":"arash6558",
+                "avtarsinghtarinabha@gmail.com":"avtarsinghtarinabha",
+                "tarsemsinghwadala@gmial.com":"tarsemsinghwadala",
+                "bajwaashok42@gmail.com":"bajwaashok42",
+                "koursarvjeet@gmail.com":"koursarvjeet",
+             "Pammarajput24@gmail.com":"Pammarajput24",
+             "dmanjot820@gmail.com":"dmanjot820"
+            };
+
+            // Clear previous error message
+            errorMessage.textContent = "";
+
+            // Basic validation
+            if (!email || !password) {
+                errorMessage.textContent = "Please enter both email and password.";
+                return;
+            }
+
+            // Check user credentials
+            if (basicUsers[email] && basicUsers[email] === password) {
+                window.location.href = "https://www.founderofenglish.com/course-videos-basic";
+            } else if (middleUsers[email] && middleUsers[email] === password) {
+                window.location.href = "https://www.founderofenglish.com/course-videos-middle";
+            } else if (advancedUsers[email] && advancedUsers[email] === password) {
+                window.location.href = "https://www.founderofenglish.com/course-videos-middle";
+            } else if (basicUsers1[email] && basicUsers1[email] === password) {
+                window.location.href = "https://www.founderofenglish.com/course-videos-basic";
+            } 
+            
+            else {
+                errorMessage.textContent = "Invalid email or password.";
+            }
+        });
+    </script>
+</body>
+</html>
